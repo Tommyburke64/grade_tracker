@@ -35,3 +35,24 @@ print('Total students: ' + str(len(names)))
 print('Class average: ' + str(round(average, 1)))
 print('Highest score: ' + str(highest))
 print('Lowest score: ' + str(lowest))
+
+print('')
+print('=== Full Grade Report ===')
+
+# for loop directly over the names list
+for i in reange(len(names)):
+    score = scores[i]
+
+# if/elif/else to assign letter grades
+    if score >= 90:
+        grade = 'A'
+    elif score >= 80:
+        grade = 'B'
+    elif score >= 70:
+        grade = 'C'
+    elif score >= 60:
+        grade = 'D'
+    else:
+        grade = 'F'
+
+        print(f"{names[i]:<20} {score:<8} {grade:<6}")
