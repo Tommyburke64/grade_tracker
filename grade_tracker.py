@@ -1,3 +1,10 @@
+import sys
+# Read command-line argument if provided
+if len(sys.argv) > 1:
+    mode = sys.argv[1]
+else:
+    mode = 'all'
+
 #collect student data
 names = []
 scores = []
@@ -12,10 +19,12 @@ while name != 'done':
         print ('score must be between 0 and 100. try again. ')
     else:
         names.append(name)
-        scores.append(scores)
+        scores.append(score)
         print(name + ' added!')
     name = input('enter student name (or done to stop): ')
 print('data entry complete. ' + str(len(names)) + ' students entered.')
+
+
 
 total = 0
 highest = scores[0]
@@ -29,19 +38,24 @@ for i in range(len(names)):
     if scores[i] < lowest:
         lowest = scores[i]
 average = total / len(names)
-print('')
-print('=== Class Summary ===')
-print('Total students: ' + str(len(names)))
-print('Class average: ' + str(round(average, 1)))
-print('Highest score: ' + str(highest))
-print('Lowest score: ' + str(lowest))
+# Around the Part 2 summary block:
+if mode == 'all' or mode == 'summary':
+    # ... your summary print statements here ...
+    print('')
+    print('=== Class Summary ===')
+    print('Total students: ' + str(len(names)))
+    print('Class average: ' + str(round(average, 1)))
+    print('Highest score: ' + str(highest))
+    print('Lowest score: ' + str(lowest))
 
-print('')
-print('=== Full Grade Report ===')
 
 # for loop directly over the names list
-for i in reange(len(names)):
+for i in range(len(names)):
     score = scores[i]
+    print('')
+    print('=== Full Grade Report ===')
+
+
 
 # if/elif/else to assign letter grades
     if score >= 90:
@@ -55,4 +69,7 @@ for i in reange(len(names)):
     else:
         grade = 'F'
 
-        print(f"{names[i]:<20} {score:<8} {grade:<6}")
+# Around the Part 3 report block:
+if mode == 'all' or mode == 'report':
+    # ... your report print statements here ...
+    print(f"{names[i]:<20} {score:<8} {grade:<6}")
